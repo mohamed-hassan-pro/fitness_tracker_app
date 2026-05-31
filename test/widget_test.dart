@@ -1,30 +1,34 @@
-// This is a basic Flutter widget test.
-//
-// To perform an interaction with a widget in your test, use the WidgetTester
-// utility in the flutter_test package. For example, you can send tap and scroll
-// gestures. You can also use WidgetTester to find child widgets in the widget
-// tree, read text, and verify that the values of widget properties are correct.
-
-import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-
-import 'package:fitness_tracker_app/main.dart';
+import 'package:fitness_tracker_app/data/models/activity_model.dart';
 
 void main() {
-  testWidgets('Counter increments smoke test', (WidgetTester tester) async {
-    // Build our app and trigger a frame.
-    await tester.pumpWidget(const MyApp());
+  group('ActivityModel Tests', () {
+    test('should convert from map and to map correctly', () {
+      final now = DateTime.now();
+      final model = ActivityModel(
+        id: '1',
+        title: 'Running',
+        type: 'Run',
+        durationMinutes: 30,
+        caloriesBurned: 350.0,
+        date: now,
+      );
 
-    // Verify that our counter starts at 0.
-    expect(find.text('0'), findsOneWidget);
-    expect(find.text('1'), findsNothing);
+      final map = model.toMap();
+      expect(map['id'], '1');
+      expect(map['title'], 'Running');
+      expect(map['type'], 'Run');
+      expect(map['durationMinutes'], 30);
+      expect(map['caloriesBurned'], 350.0);
+      expect(map['date'], now.toIso8601String());
 
-    // Tap the '+' icon and trigger a frame.
-    await tester.tap(find.byIcon(Icons.add));
-    await tester.pump();
-
-    // Verify that our counter has incremented.
-    expect(find.text('0'), findsNothing);
-    expect(find.text('1'), findsOneWidget);
+      final fromMap = ActivityModel.fromMap(map);
+      expect(fromMap.id, model.id);
+      expect(fromMap.title, model.title);
+      expect(fromMap.type, model.type);
+      expect(fromMap.durationMinutes, model.durationMinutes);
+      expect(fromMap.caloriesBurned, model.caloriesBurned);
+      expect(fromMap.date.day, model.date.day);
+    });
   });
 }
