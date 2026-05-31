@@ -1,17 +1,33 @@
-# fitness_tracker_app
+# 🏋️ Fitness Tracker App
 
-A new Flutter project.
+A premium, Clean Architecture Flutter application for tracking fitness activities. Features dynamic charts, local database storage, and a beautiful modern dark UI.
 
-## Getting Started
+## 🌟 Features
+- **Clean Architecture:** Strict separation of Domain, Data, and Presentation layers.
+- **Dynamic Charts:** Built with `fl_chart` to visualize recent activities and calories burned.
+- **Local Persistence:** High-performance SQLite database via `sqflite`.
+- **State Management:** Fully reactive UI using `flutter_bloc` (Cubits).
+- **Modern UI/UX:** Dark theme, glassmorphic elements, and single-responsibility modular widgets.
 
-This project is a starting point for a Flutter application.
+## 🏗️ Architecture & Best Practices
+- **Domain Layer:** Contains core business logic, entities (`Activity`), and repository interfaces.
+- **Data Layer:** Handles data retrieval, models mapping, and SQLite storage (`ActivityRepositoryImpl`).
+- **Presentation Layer:** Contains UI widgets and State Management (`ActivityCubit`).
+- **Modular Code:** Strict adherence to SOLID principles, with UI components isolated to prevent exceeding 100 lines per file.
 
-A few resources to get you started if this is your first Flutter project:
+## 🚀 Getting Started
 
-- [Learn Flutter](https://docs.flutter.dev/get-started/learn-flutter)
-- [Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Flutter learning resources](https://docs.flutter.dev/reference/learning-resources)
+### Prerequisites
+- Flutter SDK (latest stable)
+- Dart SDK
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+### Run the App
+```bash
+git clone https://github.com/mohamed-hassan-pro/fitness_tracker_app.git
+cd fitness_tracker_app
+flutter pub get
+flutter run
+```
+
+## 👨‍💻 Developer
+Developed by **Mohamed Hassan** (CodeAlpha Intern: **CA/DF1/55715**) as part of the App Development track.
